@@ -7,12 +7,326 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/baseData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main_base_title"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/nameTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameTV"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="@string/main_base_name_title"
+        app:layout_constraintBaseline_toBaselineOf="@+id/nameET"
+        app:layout_constraintEnd_toStartOf="@id/nameET"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/nameET"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:hint="@string/main_base_name_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toEndOf="@id/nameTV"
+        app:layout_constraintTop_toBottomOf="@+id/baseData" />
+
+    <TextView
+        android:id="@+id/firstnameTV"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="@string/main_base_firstname_title"
+        app:layout_constraintBaseline_toBaselineOf="@+id/firstnameET"
+        app:layout_constraintEnd_toStartOf="@id/firstnameET"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/firstnameET"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:hint="@string/main_base_firstname_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toEndOf="@id/firstnameTV"
+        app:layout_constraintTop_toBottomOf="@+id/nameET" />
+
+    <TextView
+        android:id="@+id/birthTV"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="@string/main_base_birthdate_title"
+        app:layout_constraintBaseline_toBaselineOf="@+id/birthET"
+        app:layout_constraintEnd_toStartOf="@id/birthET"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/birthET"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:hint="@string/main_base_birthdate_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toEndOf="@id/birthTV"
+        app:layout_constraintTop_toBottomOf="@+id/firstnameET" />
+
+    <TextView
+        android:id="@+id/nationalityTV"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="@string/main_base_nationality_title"
+        app:layout_constraintBaseline_toBaselineOf="@+id/nationalitySpinner"
+        app:layout_constraintEnd_toStartOf="@id/nationalitySpinner"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/nationalitySpinner"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:entries="@array/nationalities"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toEndOf="@id/nationalityTV"
+        app:layout_constraintTop_toBottomOf="@+id/birthET" />
+
+    <TextView
+        android:id="@+id/occupation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main_base_occupation_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nationalitySpinner" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/occupation">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_base_occupation_student" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_base_occupation_worker" />
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/studentGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="studentTitle,schoolTV,schoolET,graduationyearTV,graduationyearET" />
+
+    <TextView
+        android:id="@+id/studentTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main_specific_students_title"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/schoolET"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+
+    <TextView
+        android:id="@+id/schoolTV"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="@string/main_specific_school_title"
+        app:layout_constraintBaseline_toBaselineOf="@+id/schoolET"
+        app:layout_constraintEnd_toStartOf="@id/schoolET"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/schoolET"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:hint="@string/main_specific_school_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toEndOf="@id/schoolTV"
+        app:layout_constraintTop_toBottomOf="@+id/studentTitle" />
+
+    <TextView
+        android:id="@+id/graduationyearTV"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="@string/main_specific_graduationyear_title"
+        app:layout_constraintBaseline_toBaselineOf="@+id/graduationyearET"
+        app:layout_constraintEnd_toStartOf="@id/graduationyearET"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/graduationyearET"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:hint="@string/main_specific_graduationyear_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toEndOf="@id/graduationyearTV"
+        app:layout_constraintTop_toBottomOf="@+id/schoolET" />
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/worker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="workerTitle,companyTV,companyET,sectorsTV,sectorsSpinner,experienceTV,experienceET" />
+
+    <TextView
+        android:id="@+id/workerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main_specific_workers_title"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+
+    <TextView
+        android:id="@+id/companyTV"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="@string/main_specific_compagny_title"
+        app:layout_constraintBaseline_toBaselineOf="@+id/companyET"
+        app:layout_constraintEnd_toStartOf="@id/companyET"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/companyET"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:hint="@string/main_specific_school_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toEndOf="@id/companyTV"
+        app:layout_constraintTop_toBottomOf="@+id/workerTitle" />
+
+    <TextView
+        android:id="@+id/sectorsTV"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="@string/main_specific_sector_title"
+        app:layout_constraintBaseline_toBaselineOf="@+id/sectorsSpinner"
+        app:layout_constraintEnd_toStartOf="@id/sectorsSpinner"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/sectorsSpinner"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:entries="@array/sectors"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toEndOf="@id/sectorsTV"
+        app:layout_constraintTop_toBottomOf="@+id/companyET" />
+
+    <TextView
+        android:id="@+id/experienceTV"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="@string/main_specific_experience_title"
+        app:layout_constraintBaseline_toBaselineOf="@+id/experienceET"
+        app:layout_constraintEnd_toStartOf="@id/experienceET"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/experienceET"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:hint="@string/main_specific_experience_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toEndOf="@id/experienceTV"
+        app:layout_constraintTop_toBottomOf="@+id/sectorsSpinner" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierAddData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="radioGroup,graduationyearET,experienceET" />
+
+    <TextView
+        android:id="@+id/addData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/additional_title"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barrierAddData" />
+
+    <TextView
+        android:id="@+id/mailTV"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="@string/additional_email_title"
+        app:layout_constraintBaseline_toBaselineOf="@+id/mailET"
+        app:layout_constraintEnd_toStartOf="@id/mailET"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/mailET"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:hint="@string/additional_email_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toEndOf="@id/mailTV"
+        app:layout_constraintTop_toBottomOf="@+id/addData" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
