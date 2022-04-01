@@ -13,7 +13,6 @@
         android:text="@string/main_base_title"
         android:textAllCaps="true"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/nameTV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +70,7 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/birthET"
         app:layout_constraintEnd_toStartOf="@id/birthET"
         app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintHorizontal_weight="3"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -79,10 +78,22 @@
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:hint="@string/main_base_birthdate_title"
+        android:inputType="none"
+        app:layout_constraintEnd_toStartOf="@+id/birthBtn"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintStart_toEndOf="@id/birthTV"
+        app:layout_constraintTop_toBottomOf="@+id/firstnameET" />
+
+    <ImageButton
+        android:id="@+id/birthBtn"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cake"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintHorizontal_weight="4"
-        app:layout_constraintStart_toEndOf="@id/birthTV"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/birthET"
         app:layout_constraintTop_toBottomOf="@+id/firstnameET" />
 
     <TextView
@@ -99,8 +110,9 @@
     <Spinner
         android:id="@+id/nationalitySpinner"
         android:layout_width="0dip"
-        android:layout_height="wrap_content"
+        android:layout_height="46dp"
         android:entries="@array/nationalities"
+        app:layout_constraintBottom_toTopOf="@+id/occupation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintHorizontal_weight="4"
@@ -128,11 +140,13 @@
         app:layout_constraintTop_toBottomOf="@+id/occupation">
 
         <RadioButton
+            android:id="@+id/student"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/main_base_occupation_student" />
 
         <RadioButton
+            android:id="@+id/worker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/main_base_occupation_worker" />
@@ -204,7 +218,7 @@
 
 
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/worker"
+        android:id="@+id/workerGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -328,5 +342,44 @@
         app:layout_constraintHorizontal_weight="4"
         app:layout_constraintStart_toEndOf="@id/mailTV"
         app:layout_constraintTop_toBottomOf="@+id/addData" />
+
+    <TextView
+        android:id="@+id/photoTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/additional_picture_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mailET" />
+
+    <ImageView
+        android:id="@+id/photoIV"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:contentDescription="@string/additional_picture_cntdesc"
+        android:scaleType="fitCenter"
+        android:src="@drawable/placeholder_selfie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/photoTV" />
+
+    <TextView
+        android:id="@+id/remarksTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/additional_remarks_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photoIV" />
+
+
+    <EditText
+        android:id="@+id/remarksET"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/remarksTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

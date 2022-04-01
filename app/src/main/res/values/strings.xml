@@ -12,7 +12,7 @@
     <string name="main_base_occupation_student">Etudiant</string>
     <string name="main_base_occupation_worker">Employé</string>
 
-    <string-array translatable="false" name="nationalities">
+    <string-array name="nationalities" translatable="false">
         <item>@string/ch</item>
         <item>@string/fr</item>
         <item>@string/de</item>
@@ -81,5 +81,7 @@
 
     <string name="btn_cancel">@android:string/cancel</string>
     <string name="btn_ok">@android:string/ok</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
