@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         datePicker.addOnPositiveButtonClickListener {
-            binding.baseInclude.birthdayTextField.editText?.setText(datePicker.headerText)
+            binding.baseInclude.birthdayET.editText?.setText(datePicker.headerText)
         }
 
         binding.baseInclude.radioGroup.setOnCheckedChangeListener  { _, choiceId ->
@@ -64,8 +64,8 @@ class MainActivity : AppCompatActivity() {
         val sectors = resources.getStringArray(R.array.sectors)
         val arraySectorsAdapter = ArrayAdapter(this, R.layout.list_item, sectors)
 
-        binding.baseInclude.autoCompleteTextView.setAdapter(arrayNationalitiesAdapter)
-        binding.employeeInclude.autoCompleteTextView.setAdapter(arraySectorsAdapter)
+        binding.baseInclude.nationalitySpinner.setAdapter(arrayNationalitiesAdapter)
+        binding.employeeInclude.sectorsSpinner.setAdapter(arraySectorsAdapter)
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {

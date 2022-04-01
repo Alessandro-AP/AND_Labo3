@@ -8,58 +8,58 @@
 
 
     <TextView
-        android:id="@+id/textViewEmployee1"
-        android:layout_width="wrap_content"
+        android:id="@+id/workerTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/quicksand"
-        android:textSize="20sp"
         android:text="@string/main_specific_workers_title"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewEmployee2"
+        android:id="@+id/companyTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/quicksand"
         android:layout_marginStart="8dp"
         android:layout_marginTop="35dp"
+        android:fontFamily="@font/quicksand"
         android:text="@string/main_specific_compagny_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmployee1" />
+        app:layout_constraintTop_toBottomOf="@+id/workerTitle" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextFieldEmployee1"
+        android:id="@+id/companyET"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmployee1">
+        app:layout_constraintTop_toBottomOf="@+id/workerTitle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:fontFamily="@font/quicksand"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:fontFamily="@font/quicksand" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textViewEmployee3"
+        android:id="@+id/sectorsTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/quicksand"
         android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/quicksand"
         android:text="@string/main_specific_sector_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmployee2" />
+        app:layout_constraintTop_toBottomOf="@+id/companyTV" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/spinner_employee"
+        android:id="@+id/sectorsSpinnerContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
@@ -68,30 +68,30 @@
         android:layout_marginEnd="12dp"
         android:hint="@string/nationality_empty"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldEmployee1">
+        app:layout_constraintTop_toBottomOf="@+id/companyET">
 
         <AutoCompleteTextView
-            android:fontFamily="@font/quicksand"
-            android:id="@+id/autoCompleteTextView"
+            android:id="@+id/sectorsSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
             android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textViewEmployee4"
+        android:id="@+id/experienceTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/quicksand"
         android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/quicksand"
         android:text="@string/main_specific_experience_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmployee3" />
+        app:layout_constraintTop_toBottomOf="@+id/sectorsTV" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextFieldEmployee3"
+        android:id="@+id/experienceET"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
@@ -99,12 +99,12 @@
 
         android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_employee">
+        app:layout_constraintTop_toBottomOf="@+id/sectorsSpinnerContainer">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:fontFamily="@font/quicksand"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:fontFamily="@font/quicksand" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
