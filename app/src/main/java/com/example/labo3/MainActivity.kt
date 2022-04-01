@@ -1,7 +1,9 @@
 package com.example.labo3
 
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.example.labo3.databinding.ActivityMainBinding
@@ -54,5 +56,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.baseInclude.autoCompleteTextView.setAdapter(arrayNationalitiesAdapter)
         binding.employeeInclude.autoCompleteTextView.setAdapter(arraySectorsAdapter)
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        if (currentFocus != null) {
+            val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+        }
+        return super.dispatchTouchEvent(ev)
     }
 }
