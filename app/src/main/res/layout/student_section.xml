@@ -44,7 +44,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/quicksand" />
+            android:fontFamily="@font/quicksand"
+            android:inputType="text"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,7 +74,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/quicksand" />
+            android:fontFamily="@font/quicksand"
+            android:inputType="number"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
