@@ -31,9 +31,11 @@ import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var uri: Uri
-    private lateinit var currentImagePath: String
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding : ActivityMainBinding // Binding used for link with the layout.
+
+    private lateinit var uri: Uri // Uri used to refers an image in our storage.
+    private lateinit var currentImagePath: String // Current image path.
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,14 +48,15 @@ class MainActivity : AppCompatActivity() {
             MaterialDatePicker.Builder.datePicker().setTitleText("Select date")
                 .build()
 
-        binding.baseInclude.birthdayButton.setOnClickListener {
-            datePicker.show(supportFragmentManager, "DATE_PICKER")
-        }
-
         datePicker.addOnPositiveButtonClickListener {
             binding.baseInclude.birthdayET.editText?.setText(datePicker.headerText)
         }
 
+        binding.baseInclude.birthdayButton.setOnClickListener {
+            datePicker.show(supportFragmentManager, "DATE_PICKER")
+        }
+
+        // Shows or hides the student and worker sections according to the choice of the radioGroup
         binding.baseInclude.radioGroup.setOnCheckedChangeListener  { _, choiceId ->
             when(choiceId) {
                 R.id.student -> {
@@ -79,6 +82,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Define a ActivityResultLauncher object that contains an ActivityResultContract
+     * that allows us to take a picture and saving it into the provided content-Uri.
+     *
+     * The callback function will be invoked when the result is received.
+     */
     private val getCameraImage = registerForActivityResult(ActivityResultContracts.TakePicture()) {
         success ->
         if(success) {
