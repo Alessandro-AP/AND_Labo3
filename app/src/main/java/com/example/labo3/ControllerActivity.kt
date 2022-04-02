@@ -5,17 +5,12 @@
 package com.example.labo3
 
 import android.content.ContentValues.TAG
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Matrix
-import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.ImageView
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -23,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import com.example.labo3.ImageUtils.Companion.renderImage
 import com.example.labo3.databinding.ActivityMainBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputLayout
@@ -37,8 +33,6 @@ class ControllerActivity : AppCompatActivity() {
     private var uri: Uri = Uri.EMPTY // Uri used to refers an image in our storage.
     private var currentImagePath: String = "" // Current image path.
     private  var person : Person? = null // Current Person
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,14 +123,6 @@ class ControllerActivity : AppCompatActivity() {
         binding.employeeInclude.sectorsSpinner.setAdapter(arraySectorsAdapter)
     }
 
-/*    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-        if (currentFocus != null) {
-            val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
-        }
-        return super.dispatchTouchEvent(ev)
-    }*/
-
     /**
      * Retrieves the image uri using the file provider
      * and launch an explicit intent to start the camera
@@ -164,53 +150,6 @@ class ControllerActivity : AppCompatActivity() {
         ).apply {
             currentImagePath = absolutePath
         }
-    }
-
-    /**
-     * Set an ImageView using the path of a given image.
-     */
-    private fun renderImage(imagePath: String?, imageView: ImageView){
-        if (imagePath != null) {
-            val bitmap = BitmapFactory.decodeFile(imagePath)
-            val rotatedBitmap = rotateImage(currentImagePath,bitmap)
-            imageView.setImageBitmap(rotatedBitmap)
-        }
-        else {
-            Log.i(TAG,"ImagePath is null")
-        }
-    }
-
-    /**
-     * It retrieves the image rotation information and
-     * create a new bitmap image correctly rotated.
-     *
-     * @param imagePath path of the image
-     * @param source bitmap image
-     * @return the new rotated bitmap
-     */
-    private fun rotateImage(imagePath: String, source: Bitmap): Bitmap {
-        var result: Bitmap = source
-        val ei = ExifInterface(imagePath)
-        val orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
-        when (orientation) {
-            ExifInterface.ORIENTATION_ROTATE_90 -> result = rotateImageByAngle(result, 90.toFloat())
-            ExifInterface.ORIENTATION_ROTATE_180 -> result = rotateImageByAngle(result, 180.toFloat())
-            ExifInterface.ORIENTATION_ROTATE_270 -> result = rotateImageByAngle(result, 270.toFloat())
-        }
-        return result
-    }
-
-    /**
-     * Rotates a bitmap image from a rotation angle.
-     *
-     * @param source bitmap image
-     * @param angle rotation angle
-     * @return a new bitmap image
-     */
-    private fun rotateImageByAngle(source: Bitmap, angle: Float): Bitmap {
-        val matrix = Matrix()
-        matrix.postRotate(angle)
-        return Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true)
     }
 
     /**
