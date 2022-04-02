@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/nameTV"
+        android:id="@+id/lastNameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -37,7 +37,7 @@
         android:fontFamily="@font/quicksand"
         android:text="@string/main_base_firstname_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTV" />
+        app:layout_constraintTop_toBottomOf="@+id/lastNameTV" />
 
     <TextView
         android:id="@+id/birthdayTV"
@@ -82,14 +82,14 @@
         app:layout_constraintTop_toBottomOf="@+id/occupation">
 
         <RadioButton
-            android:id="@+id/student"
+            android:id="@+id/studentBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
             android:text="@string/main_base_occupation_student" />
 
         <RadioButton
-            android:id="@+id/worker"
+            android:id="@+id/workerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -99,7 +99,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameET"
+        android:id="@+id/lastNameET"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
         android:layout_marginEnd="12dp"
         android:hint="@string/main_base_firstname_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameET">
+        app:layout_constraintTop_toBottomOf="@+id/lastNameET">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
