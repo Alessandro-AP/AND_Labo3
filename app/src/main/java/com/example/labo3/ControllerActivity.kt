@@ -23,9 +23,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import ch.heigvd.iict.and.labo3.Person
-import ch.heigvd.iict.and.labo3.Student
-import ch.heigvd.iict.and.labo3.Worker
 import com.example.labo3.databinding.ActivityMainBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputLayout
@@ -56,7 +53,7 @@ class ControllerActivity : AppCompatActivity() {
 
         datePicker.addOnPositiveButtonClickListener {timeInMillis ->
             val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-            calendar.setTimeInMillis(timeInMillis)
+            calendar.timeInMillis = timeInMillis
             val dateStr = SimpleDateFormat("dd-MM-yyyy", Locale.US).format(calendar.time)
 
             binding.baseInclude.birthdayET.editText?.setText(dateStr)
@@ -250,7 +247,7 @@ class ControllerActivity : AppCompatActivity() {
      *
      * @return the new person
      */
-    private fun createPerson() : Person{
+    private fun createPerson() : Person {
         // Basic details
         val firstName = binding.baseInclude.firstnameET.editText?.text.toString()
         val lastName = binding.baseInclude.lastNameET.editText?.text.toString()
@@ -260,7 +257,7 @@ class ControllerActivity : AppCompatActivity() {
         val birthdayCal = Calendar.getInstance()
         if(birthdayStr != ""){
             val birthdayDate = SimpleDateFormat("dd-MM-yyyy", Locale.US).parse(birthdayStr)!!
-            birthdayCal.setTime(birthdayDate)
+            birthdayCal.time = birthdayDate
         }
 
         // Additional details
