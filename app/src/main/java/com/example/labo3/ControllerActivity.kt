@@ -86,17 +86,7 @@ class ControllerActivity : AppCompatActivity() {
             clearFields(binding.studentInclude.studentSection)
             clearFields(binding.employeeInclude.employeeSection)
             clearFields(binding.additionalDetailsInclude.additionalDetailSection)
-
-            if(currentImagePath != "") {
-                val file = File(currentImagePath)
-                if(file.exists())
-                    file.delete()
-            }
-            binding.additionalDetailsInclude.photoIV.setImageDrawable(ContextCompat.getDrawable(applicationContext,R.drawable.placeholder_selfie))
-
-            // Reset variables
-            uri = Uri.EMPTY
-            currentImagePath = ""
+            clearPicture()
             person = null
         }
 
@@ -224,7 +214,7 @@ class ControllerActivity : AppCompatActivity() {
     }
 
     /**
-     * Clear all Text fields from an ConstraintLayout
+     * Clear all EditText fields and RadioButtons from a ConstraintLayout
      */
     private fun clearFields(constraintLayout: ConstraintLayout) {
         val countField = constraintLayout.childCount
@@ -238,6 +228,27 @@ class ControllerActivity : AppCompatActivity() {
                 binding.studentInclude.studentSection.visibility = View.GONE
             }
         }
+    }
+
+    /**
+     * Reset the picture field and delete the picture if necessary.
+     */
+    private fun clearPicture() {
+        if (currentImagePath != "") {
+            val file = File(currentImagePath)
+            if (file.exists())
+                file.delete()
+        }
+        binding.additionalDetailsInclude.photoIV.setImageDrawable(
+            ContextCompat.getDrawable(
+                applicationContext,
+                R.drawable.placeholder_selfie
+            )
+        )
+
+        // Reset variables
+        uri = Uri.EMPTY
+        currentImagePath = ""
     }
 
     /**
