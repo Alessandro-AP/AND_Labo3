@@ -1,5 +1,5 @@
 // AND - Labo 3
-// Authors : Alessandro Parrino, Daniel Sciarra, Wilfried Karel ◕◡◕
+// Authors : Alessandro Parrino, Daniel Sciarra, Wilfried Karel Ngueukam Djeuda ◕◡◕
 // Date: 02.04.22
 
 package com.example.labo3
