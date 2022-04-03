@@ -93,7 +93,7 @@ class ControllerActivity : AppCompatActivity() {
      */
     private fun initDatePicker() {
         val datePicker =
-            MaterialDatePicker.Builder.datePicker().setTitleText("Select date").build()
+            MaterialDatePicker.Builder.datePicker().setTitleText(R.string.main_base_birthdate_dialog_title).build()
 
         datePicker.addOnPositiveButtonClickListener { timeInMillis ->
             val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))

@@ -11,7 +11,7 @@ Date: 02.04.22
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/inputsGuideline"
+        android:id="@+id/inputsGuideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -48,7 +48,7 @@ Date: 02.04.22
         android:layout_marginEnd="12dp"
         android:hint="@string/additional_email_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/inputsGuideline"
+        app:layout_constraintStart_toStartOf="@+id/inputsGuideline4"
         app:layout_constraintTop_toBottomOf="@+id/additionalData">
 
         <com.google.android.material.textfield.TextInputEditText

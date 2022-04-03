@@ -81,5 +81,6 @@
 
     <string name="btn_cancel">@android:string/cancel</string>
     <string name="btn_ok">@android:string/ok</string>
+    <string name="cake_picture_cntdesc">cake image</string>
 
 </resources>
