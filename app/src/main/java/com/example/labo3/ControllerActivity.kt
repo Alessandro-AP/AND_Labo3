@@ -4,7 +4,6 @@
 
 package com.example.labo3
 
-import android.content.ContentValues.TAG
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -24,15 +23,18 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputLayout
 import java.io.File
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.TimeZone
+import java.util.Locale
+import java.util.Date
 
 class ControllerActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding // Binding used for link with the layout.
+    private lateinit var binding: ActivityMainBinding // to link the layout components.
 
-    private var uri: Uri = Uri.EMPTY // Uri used to refers an image in our storage.
-    private var currentImagePath: String = "" // Current image path.
-    private  var person : Person? = null // Current Person
+    private var uri: Uri = Uri.EMPTY // to refer an image in our storage.
+    private var currentImagePath: String = ""
+    private var person: Person? = null // to store the person created with the form.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,29 +42,14 @@ class ControllerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initSpinners()
+        initDatePicker()
 
-        val datePicker =
-            MaterialDatePicker.Builder.datePicker().setTitleText("Select date")
-                .build()
-
-        datePicker.addOnPositiveButtonClickListener {timeInMillis ->
-            val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-            calendar.timeInMillis = timeInMillis
-            val dateStr = SimpleDateFormat("dd-MM-yyyy", Locale.US).format(calendar.time)
-
-            binding.baseInclude.birthdayET.editText?.setText(dateStr)
-        }
-
-        binding.baseInclude.birthdayButton.setOnClickListener {
-            datePicker.show(supportFragmentManager, "DATE_PICKER")
-        }
-
-        // Shows or hides the student and worker sections according to the choice of the radioGroup
-        binding.baseInclude.radioGroup.setOnCheckedChangeListener  { _, choiceId ->
-            when(choiceId) {
+        // Show and hide the appropriate sections according to the radioGroup's choice.
+        binding.baseInclude.radioGroup.setOnCheckedChangeListener { _, choiceId ->
+            when (choiceId) {
                 R.id.studentBtn -> {
-                    binding.studentInclude.studentSection.visibility = View.VISIBLE
                     binding.employeeInclude.employeeSection.visibility = View.GONE
+                    binding.studentInclude.studentSection.visibility = View.VISIBLE
                 }
                 R.id.workerBtn -> {
                     binding.studentInclude.studentSection.visibility = View.GONE
@@ -75,6 +62,7 @@ class ControllerActivity : AppCompatActivity() {
             invokeCamera()
         }
 
+        // Reset the form inputs.
         binding.cancelBtn.setOnClickListener {
             clearFields(binding.baseInclude.baseDetailsSection)
             clearFields(binding.studentInclude.studentSection)
@@ -84,34 +72,43 @@ class ControllerActivity : AppCompatActivity() {
             person = null
         }
 
+        // Create the appropriate type of person and log it.
         binding.okBtn.setOnClickListener {
-            if(!binding.baseInclude.studentBtn.isChecked && !binding.baseInclude.workerBtn.isChecked){
-                Toast.makeText(applicationContext,"You need to check an occupation", Toast.LENGTH_SHORT).show()
+            if (!binding.baseInclude.studentBtn.isChecked && !binding.baseInclude.workerBtn.isChecked) {
+                Toast.makeText(
+                    applicationContext,
+                    "You need to check an occupation",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             }
-
             // Note: we suppose that the user has entered all the data correctly !
             person = createPerson()
-            println("Result:\n $person")
+            Log.i(PERSON, person.toString())
         }
     }
 
     /**
-     * Define a ActivityResultLauncher object that contains an ActivityResultContract
-     * that allows us to take a picture and saving it into the provided content-Uri.
-     *
-     * The callback function will be invoked when the result is received.
+     * Initialise date picker component.
      */
-    private val getCameraImage = registerForActivityResult(ActivityResultContracts.TakePicture()) {
-        success ->
-        if(success) {
-            Log.i(TAG, "Image location: $uri")
-            renderImage(currentImagePath, binding.additionalDetailsInclude.photoIV)
+    private fun initDatePicker() {
+        val datePicker =
+            MaterialDatePicker.Builder.datePicker().setTitleText("Select date").build()
+
+        datePicker.addOnPositiveButtonClickListener { timeInMillis ->
+            val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+            calendar.timeInMillis = timeInMillis
+            val dateStr = SimpleDateFormat("dd-MM-yyyy", Locale.US).format(calendar.time)
+            binding.baseInclude.birthdayET.editText?.setText(dateStr)
+        }
+
+        binding.baseInclude.birthdayButton.setOnClickListener {
+            datePicker.show(supportFragmentManager, "DATE_PICKER")
         }
     }
 
     /**
-     * Initialise spinners data in the layout.
+     * Initialise spinners data.
      */
     private fun initSpinners() {
         val nationalities = resources.getStringArray(R.array.nationalities)
@@ -124,28 +121,40 @@ class ControllerActivity : AppCompatActivity() {
     }
 
     /**
-     * Retrieves the image uri using the file provider
-     * and launch an explicit intent to start the camera
+     * Define an ActivityResultLauncher object that contains an ActivityResultContract
+     * that allows us to take a picture and save it to the provided content-Uri.
+     *
+     * The callback function will be invoked when the result is received.
+     */
+    private val getCameraImage =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+            if (success) {
+                Log.i(CAMERA, "Image location: $uri")
+                renderImage(currentImagePath, binding.additionalDetailsInclude.photoIV)
+            }
+        }
+
+    /**
+     * Retrieve the image uri using the file provider and launch an intent to start the camera.
      */
     private fun invokeCamera() {
         try {
             val file = createImageFile()
             uri = FileProvider.getUriForFile(this, "com.example.labo3.provider", file)
-        } catch (e : Exception) {
-            Log.e(TAG, "Error: ${e.message}")
+        } catch (e: Exception) {
+            Log.e(CAMERA, "Error: ${e.message}")
         }
         getCameraImage.launch(uri)
     }
 
     /**
-     * Create a temporary file with '.jpg' extension
-     * in the external file directory and return it.
+     * Return a temporary file, with '.jpg' extension, created in the external file directory.
      */
-    private fun createImageFile() : File {
+    private fun createImageFile(): File {
         val imageDirectory = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(
             "file_${Date().time}",
-                ".jpg",
+            ".jpg",
             imageDirectory
         ).apply {
             currentImagePath = absolutePath
@@ -153,11 +162,11 @@ class ControllerActivity : AppCompatActivity() {
     }
 
     /**
-     * Clear all EditText fields and RadioButtons from a ConstraintLayout
+     * Clear all EditText fields and RadioButtons from a ConstraintLayout.
      */
     private fun clearFields(constraintLayout: ConstraintLayout) {
-        val countField = constraintLayout.childCount
-        for(i in 0..countField) {
+        val viewCount = constraintLayout.childCount
+        for (i in 0..viewCount) {
             val view = constraintLayout.getChildAt(i)
             if (view is TextInputLayout) {
                 view.editText?.text?.clear()
@@ -184,43 +193,43 @@ class ControllerActivity : AppCompatActivity() {
                 R.drawable.placeholder_selfie
             )
         )
-
         // Reset variables
         uri = Uri.EMPTY
         currentImagePath = ""
     }
 
     /**
-     * Create a new person using the data from each form.
-     * The person will be of type Student or Worker
-     * according to the choice provided by the user (present in the RadioGroup).
+     * Create a new person using the data from the form.
+     * The person will be of type Student or Worker according to the user's choice.
      *
      * @return the new person
      */
-    private fun createPerson() : Person {
+    private fun createPerson(): Person {
         // Basic details
         val firstName = binding.baseInclude.firstnameET.editText?.text.toString()
         val lastName = binding.baseInclude.lastNameET.editText?.text.toString()
-        val nationality =  binding.baseInclude.nationalitySpinnerContainer.editText?.text.toString()
+        val nationality = binding.baseInclude.nationalitySpinnerContainer.editText?.text.toString()
         // Parse birthday String to Calendar
         val birthdayStr = binding.baseInclude.birthdayET.editText?.text.toString()
         val birthdayCal = Calendar.getInstance()
-        if(birthdayStr != ""){
+        if (birthdayStr != "") {
             val birthdayDate = SimpleDateFormat("dd-MM-yyyy", Locale.US).parse(birthdayStr)!!
             birthdayCal.time = birthdayDate
         }
 
         // Additional details
         val email = binding.additionalDetailsInclude.mailET.editText?.text.toString()
-        val path = currentImagePath
+        val picturePath = currentImagePath
         val remarks = binding.additionalDetailsInclude.remarksET.editText?.text.toString()
 
         when {
             binding.baseInclude.studentBtn.isChecked -> {
                 val university = binding.studentInclude.schoolET.editText?.text.toString()
-                val graduationYearStr = binding.studentInclude.graduationyearET.editText?.text.toString()
+                val graduationYearStr =
+                    binding.studentInclude.graduationyearET.editText?.text.toString()
                 val graduationYear = if (graduationYearStr != "") graduationYearStr.toInt() else 0
-                return Student(lastName,
+                return Student(
+                    lastName,
                     firstName,
                     birthdayCal,
                     nationality,
@@ -228,14 +237,17 @@ class ControllerActivity : AppCompatActivity() {
                     graduationYear,
                     email,
                     remarks,
-                    path)
+                    picturePath
+                )
             }
             binding.baseInclude.workerBtn.isChecked -> {
                 val company = binding.employeeInclude.companyET.editText?.text.toString()
-                val sector = binding.employeeInclude.sectorsSpinnerContainer.editText?.text.toString()
+                val sector =
+                    binding.employeeInclude.sectorsSpinnerContainer.editText?.text.toString()
                 val experienceStr = binding.employeeInclude.experienceET.editText?.text.toString()
                 val experience = if (experienceStr != "") experienceStr.toInt() else 0
-                return Worker(lastName,
+                return Worker(
+                    lastName,
                     firstName,
                     birthdayCal,
                     nationality,
@@ -244,11 +256,17 @@ class ControllerActivity : AppCompatActivity() {
                     experience,
                     email,
                     remarks,
-                    path)
+                    picturePath
+                )
             }
             else -> {
                 throw Exception("Error: no choice has been made for occupation")
             }
         }
+    }
+
+    companion object {
+        private const val PERSON = "PERSON"
+        private const val CAMERA = "CAMERA"
     }
 }

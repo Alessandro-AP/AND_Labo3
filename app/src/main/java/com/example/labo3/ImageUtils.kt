@@ -32,14 +32,13 @@ class ImageUtils {
         }
 
         /**
-         * It retrieves the image rotation information and
-         * create a new bitmap image correctly rotated.
+         * Retrieve the image rotation information and create a new bitmap image correctly rotated.
          *
          * @param imagePath path of the image
          * @param source bitmap image
          * @return the new rotated bitmap
          */
-        fun rotateImage(imagePath: String, source: Bitmap): Bitmap {
+        private fun rotateImage(imagePath: String, source: Bitmap): Bitmap {
             var result: Bitmap = source
             val ei = ExifInterface(imagePath)
             val orientation =
@@ -56,7 +55,7 @@ class ImageUtils {
         }
 
         /**
-         * Rotates a bitmap image from a rotation angle.
+         * Rotate a bitmap image from a rotation angle.
          *
          * @param source bitmap image
          * @param angle rotation angle
