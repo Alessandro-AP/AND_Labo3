@@ -31,11 +31,12 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/companyET"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="220dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/inputsGuideline"
         app:layout_constraintTop_toBottomOf="@+id/workerTitle">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -59,13 +60,13 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/sectorsSpinnerContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="220dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-
         android:layout_marginEnd="12dp"
         android:hint="@string/nationality_empty"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/inputsGuideline"
         app:layout_constraintTop_toBottomOf="@+id/companyET">
 
         <AutoCompleteTextView
@@ -90,12 +91,12 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/experienceET"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="220dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-
         android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/inputsGuideline"
         app:layout_constraintTop_toBottomOf="@+id/sectorsSpinnerContainer">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -105,5 +106,12 @@
             android:inputType="number" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/inputsGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="160dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

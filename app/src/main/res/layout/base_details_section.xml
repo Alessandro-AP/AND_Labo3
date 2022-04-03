@@ -97,12 +97,13 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/lastNameET"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="220dp"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="12dp"
         android:hint="@string/main_base_name_title"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/inputsGuideline"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -116,12 +117,13 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/firstnameET"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="220dp"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="12dp"
         android:hint="@string/main_base_firstname_title"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/inputsGuideline"
         app:layout_constraintTop_toBottomOf="@+id/lastNameET">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -135,10 +137,11 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/birthdayET"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="176dp"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/birthdayButton"
+        app:layout_constraintStart_toStartOf="@+id/inputsGuideline"
         app:layout_constraintTop_toBottomOf="@+id/firstnameET">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -154,12 +157,13 @@
         android:id="@+id/birthdayButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:backgroundTint="#D1E5F4"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/nationalitySpinnerContainer"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/birthdayET"
         app:layout_constraintTop_toBottomOf="@+id/firstnameET"
         app:srcCompat="@drawable/cake" />
 
@@ -167,12 +171,13 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nationalitySpinnerContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="220dp"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="12dp"
         android:hint="@string/nationality_empty"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/inputsGuideline"
         app:layout_constraintTop_toBottomOf="@+id/birthdayET">
 
         <AutoCompleteTextView
@@ -183,5 +188,12 @@
             android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/inputsGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="160dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
