@@ -22,55 +22,51 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/main_base_name_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/baseData" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/lastNameET"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/firstnameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/main_base_firstname_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameTV" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/firstnameET"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/birthdayTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/main_base_birthdate_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstnameTV" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/birthdayET"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/nationalityTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/main_base_nationality_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birthdayTV" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/nationalitySpinnerContainer"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/occupation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/main_base_occupation_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nationalityTV" />
+        app:layout_constraintTop_toBottomOf="@+id/nationalitySpinnerContainer" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -148,9 +144,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:enabled="false"
             android:fontFamily="@font/quicksand"
-            android:inputType="date"
-            android:enabled="false"/>
+            android:inputType="date" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

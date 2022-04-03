@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:visibility="gone">
 
-
     <TextView
         android:id="@+id/studentTitle"
         android:layout_width="match_parent"
@@ -24,11 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/main_specific_school_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentTitle" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/schoolET"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/schoolET"
@@ -45,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/quicksand"
-            android:inputType="text"/>
+            android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,11 +52,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/main_specific_graduationyear_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/schoolTV" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/graduationyearET"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/graduationyearET"
@@ -75,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/quicksand"
-            android:inputType="number"/>
+            android:inputType="number" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

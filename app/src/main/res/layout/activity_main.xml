@@ -38,12 +38,11 @@
             app:layout_constraintTop_toBottomOf="@+id/base_include" />
 
         <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier2"
+            android:id="@+id/sectionBarrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="employee_include,student_include"
-            tools:layout_editor_absoluteY="344dp" />
+            app:constraint_referenced_ids="base_include, employee_include, student_include" />
 
         <include
             android:id="@+id/additional_details_include"
@@ -53,17 +52,16 @@
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/barrier2" />
+            app:layout_constraintTop_toBottomOf="@+id/sectionBarrier" />
 
         <Button
             android:id="@+id/cancel_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginVertical="15dp"
             android:text="@string/btn_cancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ok_btn"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/additional_details_include" />
 
@@ -72,11 +70,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="76dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginVertical="15dp"
             android:text="@string/btn_ok"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/cancel_btn"
             app:layout_constraintTop_toBottomOf="@+id/additional_details_include" />
 

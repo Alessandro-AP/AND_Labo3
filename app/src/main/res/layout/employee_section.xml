@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:visibility="gone">
 
-
     <TextView
         android:id="@+id/workerTitle"
         android:layout_width="match_parent"
@@ -24,11 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/main_specific_compagny_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workerTitle" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/companyET"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/companyET"
@@ -44,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/quicksand"
-            android:inputType="text"/>
+            android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,11 +51,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/main_specific_sector_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/companyTV" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/sectorsSpinnerContainer"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/sectorsSpinnerContainer"
@@ -85,11 +82,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/main_specific_experience_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sectorsTV" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/experienceET"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/experienceET"

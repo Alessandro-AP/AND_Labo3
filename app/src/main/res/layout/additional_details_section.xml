@@ -23,11 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/additional_email_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/additionalData" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/mailET"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/mailET"
@@ -53,21 +52,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/additional_picture_title"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mailTV" />
+        app:layout_constraintTop_toBottomOf="@+id/mailET" />
 
     <ImageView
         android:id="@+id/photoIV"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:contentDescription="@string/additional_picture_cntdesc"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/photoTV"
         app:srcCompat="@drawable/placeholder_selfie" />
@@ -77,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/quicksand"
         android:text="@string/additional_remarks_title"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,9 +86,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/remarksTV">
